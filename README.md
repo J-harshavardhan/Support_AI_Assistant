@@ -1,8 +1,8 @@
-🤖 SupportAI — Grounded Helpdesk Assistant
+# 🤖 SupportAI — Grounded Helpdesk Assistant
 
 <p align="center">
 
-AI-Powered Customer Support with Hybrid Retrieval, Confidence Scoring & Human Escalation
+### AI-Powered Customer Support with Hybrid Retrieval, Confidence Scoring & Human Escalation
 
 A grounded customer-support assistant that retrieves answers from a controlled FAQ knowledge base, evaluates confidence, uses an LLM only for grounded response generation, and escalates uncertain requests to human support.
 
@@ -18,10 +18,12 @@ A grounded customer-support assistant that retrieves answers from a controlled F
 
 </p>
 
-📸 Application Preview
+---
 
-Screenshots: Create a screenshots/ folder in your repository and add the four project screenshots using these exact names:
-home.png, query.png, answer.png, escalation.png.
+## 📸 Application Preview
+
+> **Screenshots:** Create a `screenshots/` folder in your repository and add the four project screenshots using these exact names:
+> `home.png`, `query.png`, `answer.png`, `escalation.png`.
 
 <p align="center">
   <img src="screenshots/home.png" width="95%" alt="SupportAI Helpdesk Home Interface">
@@ -31,9 +33,11 @@ home.png, query.png, answer.png, escalation.png.
   <em>SupportAI Helpdesk — a clean interface for grounded customer support.</em>
 </p>
 
-🌟 Overview
+---
 
-SupportAI is an AI-powered customer-support assistant built using Python, Streamlit, TF-IDF, hybrid retrieval, and the OpenRouter LLM API.
+# 🌟 Overview
+
+**SupportAI** is an AI-powered customer-support assistant built using **Python, Streamlit, TF-IDF, hybrid retrieval, and the OpenRouter LLM API**.
 
 Instead of sending every customer question directly to an LLM, SupportAI first searches a controlled FAQ knowledge base and calculates a retrieval confidence score.
 
@@ -41,80 +45,50 @@ When a relevant FAQ is identified with sufficient confidence, the system uses th
 
 When the system cannot confidently identify an appropriate FAQ, it avoids guessing and provides a safe fallback with an option to escalate the request to human support.
 
-🎯 Core Principle
+### 🎯 Core Principle
 
-Retrieve trusted information → evaluate confidence → generate a grounded answer → escalate when uncertain.
+> **Retrieve trusted information → evaluate confidence → generate a grounded answer → escalate when uncertain.**
 
-🚀 Live Demo
+---
 
-🌐 Try SupportAI
+# 🚀 Live Demo
 
-Live Application:
+### 🌐 Try SupportAI
+
+**Live Application:**  
 https://harsha-support-ai-assistant.streamlit.app/
 
-Source Code:
+**Source Code:**  
 https://github.com/J-harshavardhan/Support_AI_Assistant
 
-The application is deployed using Streamlit Community Cloud.
+The application is deployed using **Streamlit Community Cloud**.
 
-Note: The Streamlit deployment URL may change if the application name or deployment configuration is updated.
+> **Note:** The Streamlit deployment URL may change if the application name or deployment configuration is updated.
 
-✨ Key Features
+---
 
-Feature
+# ✨ Key Features
 
-Description
+| Feature | Description |
+|---|---|
+| 📚 Grounded FAQ Answers | Answers are based on a controlled FAQ knowledge base |
+| 🔎 Keyword Search | Finds FAQs using keyword-based matching |
+| 📊 TF-IDF Retrieval | Uses TF-IDF and cosine similarity for textual matching |
+| 🔀 Hybrid Search | Combines keyword and TF-IDF retrieval |
+| 🎯 Confidence Scoring | Measures the strength of the FAQ match |
+| 🤖 Grounded LLM | Generates conversational answers from retrieved FAQ content |
+| 💬 Conversation History | Maintains user and assistant conversation turns |
+| 🛟 Human Escalation | Provides a fallback path for uncertain requests |
+| 🎫 Mock Tickets | Generates support ticket IDs for escalated requests |
+| 🧯 API Fallback | Uses the official FAQ answer when the LLM API fails |
+| 🎈 Streamlit UI | Interactive web-based helpdesk interface |
+| ☁️ Cloud Deployment | Deployable through Streamlit Community Cloud |
 
-📚 Grounded FAQ Answers
+---
 
-Answers are based on a controlled FAQ knowledge base
+# 🧠 How SupportAI Works
 
-🔎 Keyword Search
-
-Finds FAQs using keyword-based matching
-
-📊 TF-IDF Retrieval
-
-Uses TF-IDF and cosine similarity for textual matching
-
-🔀 Hybrid Search
-
-Combines keyword and TF-IDF retrieval
-
-🎯 Confidence Scoring
-
-Measures the strength of the FAQ match
-
-🤖 Grounded LLM
-
-Generates conversational answers from retrieved FAQ content
-
-💬 Conversation History
-
-Maintains user and assistant conversation turns
-
-🛟 Human Escalation
-
-Provides a fallback path for uncertain requests
-
-🎫 Mock Tickets
-
-Generates support ticket IDs for escalated requests
-
-🧯 API Fallback
-
-Uses the official FAQ answer when the LLM API fails
-
-🎈 Streamlit UI
-
-Interactive web-based helpdesk interface
-
-☁️ Cloud Deployment
-
-Deployable through Streamlit Community Cloud
-
-🧠 How SupportAI Works
-
+```mermaid
 flowchart TD
 
     User["👤 User Question"]
@@ -163,9 +137,13 @@ flowchart TD
     Fallback --> History
 
     History --> UI
+```
 
-🔄 Request Lifecycle
+---
 
+# 🔄 Request Lifecycle
+
+```mermaid
 sequenceDiagram
 
     participant U as 👤 User
@@ -189,22 +167,29 @@ sequenceDiagram
         A-->>U: Safe fallback response
         A->>E: Offer human escalation
     end
+```
 
-🔎 Hybrid Retrieval
+---
+
+# 🔎 Hybrid Retrieval
 
 SupportAI combines two retrieval techniques.
 
-1. 🔤 Keyword Search
+## 1. 🔤 Keyword Search
 
 Task 1 performs keyword-based matching against the FAQ knowledge base.
 
 A keyword match receives a base score of:
 
+```text
 0.50
+```
 
 This provides strong support for direct keyword matches.
 
-2. 📊 TF-IDF Similarity
+---
+
+## 2. 📊 TF-IDF Similarity
 
 Task 3 converts FAQ questions and the user's query into TF-IDF vectors.
 
@@ -212,6 +197,7 @@ Cosine similarity is then used to measure textual similarity between the query a
 
 Conceptually:
 
+```text
 User Question
       │
       ▼
@@ -222,35 +208,36 @@ Cosine Similarity
       │
       ▼
 FAQ Similarity Score
+```
 
 TF-IDF provides lexical/vector-space similarity, allowing differently worded questions to match related FAQ content.
 
-3. 🔀 Hybrid Ranking
+---
+
+## 3. 🔀 Hybrid Ranking
 
 The hybrid search system:
 
-Performs keyword matching.
-
-Calculates TF-IDF cosine similarity.
-
-Combines candidate results.
-
-Removes duplicate FAQ IDs.
-
-Retains the highest score for each FAQ.
-
-Sorts candidates by score.
-
-Selects the strongest FAQ match.
-
-Applies the confidence threshold.
+1. Performs keyword matching.
+2. Calculates TF-IDF cosine similarity.
+3. Combines candidate results.
+4. Removes duplicate FAQ IDs.
+5. Retains the highest score for each FAQ.
+6. Sorts candidates by score.
+7. Selects the strongest FAQ match.
+8. Applies the confidence threshold.
 
 The default agent confidence threshold is:
 
+```text
 0.15
+```
 
-🔍 Search Pipeline
+---
 
+# 🔍 Search Pipeline
+
+```text
                          USER QUESTION
                               │
                               ▼
@@ -287,8 +274,11 @@ The default agent confidence threshold is:
                  │                       │
                  ▼                       ▼
              AI Answer             👨‍💼 Escalation
+```
 
-📸 Natural-Language Query
+---
+
+# 📸 Natural-Language Query
 
 <p align="center">
   <img src="screenshots/query.png" width="95%" alt="SupportAI Natural Language Query">
@@ -300,11 +290,15 @@ The default agent confidence threshold is:
 
 Example:
 
+```text
 How do I update my email address?
+```
 
 The system searches the FAQ knowledge base and identifies the most relevant FAQ.
 
-🤖 Grounded AI Response
+---
+
+# 🤖 Grounded AI Response
 
 <p align="center">
   <img src="screenshots/answer.png" width="95%" alt="SupportAI Grounded AI Response">
@@ -316,6 +310,7 @@ The system searches the FAQ knowledge base and identifies the most relevant FAQ.
 
 Example:
 
+```text
 User:
 How do I update my email address?
 
@@ -327,56 +322,58 @@ and make the necessary change there.
 
 FAQ: faq-007
 Confidence: 0.83
+```
 
 The FAQ ID and confidence score provide visibility into the retrieval result.
 
-📚 Grounded FAQ Answers
+---
+
+# 📚 Grounded FAQ Answers
 
 The LLM receives:
 
-The user's question
-
-The selected FAQ question
-
-The official FAQ answer
+- The user's question
+- The selected FAQ question
+- The official FAQ answer
 
 The system prompt instructs the model to:
 
-Use only the supplied FAQ content.
-
-Keep the response professional and concise.
-
-Avoid inventing policies.
-
-Avoid inventing prices.
-
-Avoid inventing dates.
-
-Avoid inventing unsupported procedures.
-
-Explain when the FAQ does not cover a requested detail.
+- Use only the supplied FAQ content.
+- Keep the response professional and concise.
+- Avoid inventing policies.
+- Avoid inventing prices.
+- Avoid inventing dates.
+- Avoid inventing unsupported procedures.
+- Explain when the FAQ does not cover a requested detail.
 
 This creates a separation between:
 
+```text
 RETRIEVAL
     ↓
 VERIFIED FAQ
     ↓
 LLM GENERATION
+```
 
 The LLM's role is primarily to communicate retrieved information naturally rather than independently deciding what the support policy should be.
 
-🎯 Confidence-Based Routing
+---
+
+# 🎯 Confidence-Based Routing
 
 Each retrieval attempt can produce a confidence score.
 
 Example:
 
+```text
 FAQ: faq-007
 Confidence: 0.83
+```
 
 The confidence score determines the next step.
 
+```text
                   Confidence
                        │
               ┌────────┴────────┐
@@ -388,10 +385,13 @@ The confidence score determines the next step.
               │                 │
               ▼                 ▼
            Answer           Escalation
+```
 
-Important: The confidence value is a retrieval score, not a calibrated probability.
+> **Important:** The confidence value is a retrieval score, not a calibrated probability.
 
-🛟 Human Escalation
+---
+
+# 🛟 Human Escalation
 
 When SupportAI cannot confidently identify an appropriate FAQ, it can provide a human-support escalation path.
 
@@ -405,6 +405,7 @@ When SupportAI cannot confidently identify an appropriate FAQ, it can provide a 
 
 Example:
 
+```text
 Your request has been escalated to our support team.
 
 Ticket ID:
@@ -414,43 +415,48 @@ Estimated response time:
 within 4 business hours.
 
 Confidence: 0.00
+```
 
-The ticket-generation functionality is currently a mock support workflow for demonstration purposes.
+The ticket-generation functionality is currently a **mock support workflow for demonstration purposes**.
 
-💬 Conversation State
+---
 
-SupportAgent maintains conversation history using the ConversationTurn dataclass.
+# 💬 Conversation State
+
+`SupportAgent` maintains conversation history using the `ConversationTurn` dataclass.
 
 Each assistant response can contain:
 
+```text
 FAQ ID
 Confidence Score
 Response Content
+```
 
 The agent also tracks repeated low-confidence requests and can create a mock support ticket such as:
 
+```text
 TICKET-48291
+```
 
-🧯 API Failure Resilience
+---
+
+# 🧯 API Failure Resilience
 
 SupportAI is designed to degrade gracefully when the LLM API is unavailable.
 
 Possible failure conditions include:
 
-Missing API key
-
-Invalid API key
-
-Authorization errors
-
-Payment/credit errors
-
-API connectivity problems
-
-OpenRouter service failures
+- Missing API key
+- Invalid API key
+- Authorization errors
+- Payment/credit errors
+- API connectivity problems
+- OpenRouter service failures
 
 The fallback flow is:
 
+```text
 OpenRouter Failure
        │
        ▼
@@ -461,13 +467,17 @@ Preserve FAQ Match
        │
        ▼
 Display Official FAQ Answer
+```
 
 This allows a verified FAQ answer to remain available even when the LLM layer cannot generate a response.
 
-📌 Supported Helpdesk Topics
+---
+
+# 📌 Supported Helpdesk Topics
 
 SupportAI currently demonstrates FAQ handling for:
 
+```text
 🔐 Password Reset
 👤 Account Access
 📦 Order Tracking
@@ -477,11 +487,15 @@ SupportAI currently demonstrates FAQ handling for:
 📧 Email Address Updates
 🔄 Subscription Cancellation
 ☎️ Customer Support
+```
 
 The FAQ knowledge base can be extended with additional categories and questions.
 
-🏗️ Project Structure
+---
 
+# 🏗️ Project Structure
+
+```text
 Support_AI_Assistant/
 │
 ├── 📄 app.py
@@ -513,81 +527,42 @@ Support_AI_Assistant/
 │
 └── 📄 README.md
     └── Project documentation
+```
 
-🧩 Component Responsibilities
+---
 
-File
+# 🧩 Component Responsibilities
 
-Responsibility
+| File | Responsibility |
+|---|---|
+| `task1.py` | FAQ data, keyword search, ID lookup, category lookup |
+| `task2.py` | OpenRouter configuration, API client, error handling, grounded prompts |
+| `task3.py` | TF-IDF matching, cosine similarity, confidence thresholds, hybrid search |
+| `task4.py` | Conversational agent, history, fallback handling, escalation |
+| `app.py` | Streamlit web interface |
+| `requirements.txt` | Python dependencies |
+| `.env` | Local API key configuration |
 
-task1.py
+---
 
-FAQ data, keyword search, ID lookup, category lookup
+# 🛠️ Technology Stack
 
-task2.py
+| Technology | Purpose |
+|---|---|
+| 🐍 Python | Core application logic |
+| 🎈 Streamlit | Interactive web interface |
+| 📊 Scikit-learn | TF-IDF and cosine similarity |
+| 🌐 OpenRouter | LLM API access |
+| 🔗 Requests | HTTP/API communication |
+| 🔐 Python Dotenv | Local environment configuration |
+| 🧠 LLM | Grounded conversational response generation |
+| 🧮 Dataclasses | Conversation state representation |
 
-OpenRouter configuration, API client, error handling, grounded prompts
+---
 
-task3.py
+# 💻 Example Conversation
 
-TF-IDF matching, cosine similarity, confidence thresholds, hybrid search
-
-task4.py
-
-Conversational agent, history, fallback handling, escalation
-
-app.py
-
-Streamlit web interface
-
-requirements.txt
-
-Python dependencies
-
-.env
-
-Local API key configuration
-
-🛠️ Technology Stack
-
-Technology
-
-Purpose
-
-🐍 Python
-
-Core application logic
-
-🎈 Streamlit
-
-Interactive web interface
-
-📊 Scikit-learn
-
-TF-IDF and cosine similarity
-
-🌐 OpenRouter
-
-LLM API access
-
-🔗 Requests
-
-HTTP/API communication
-
-🔐 Python Dotenv
-
-Local environment configuration
-
-🧠 LLM
-
-Grounded conversational response generation
-
-🧮 Dataclasses
-
-Conversation state representation
-
-💻 Example Conversation
-
+```text
 ┌──────────────────────────────────────────────┐
 │ 👤 USER                                      │
 ├──────────────────────────────────────────────┤
@@ -617,113 +592,135 @@ Conversation state representation
 │ FAQ: faq-001                                 │
 │ Confidence: 0.50                            │
 └──────────────────────────────────────────────┘
+```
 
-⚙️ Local Setup
+---
 
-1. Clone the Repository
+# ⚙️ Local Setup
 
+## 1. Clone the Repository
+
+```bash
 git clone https://github.com/J-harshavardhan/Support_AI_Assistant.git
 
 cd Support_AI_Assistant
+```
 
-2. Create a Virtual Environment
+## 2. Create a Virtual Environment
 
-Windows Command Prompt
+### Windows Command Prompt
 
+```bat
 python -m venv .venv
 .venv\Scripts\activate
+```
 
-PowerShell
+### PowerShell
 
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+```
 
-3. Install Dependencies
+## 3. Install Dependencies
 
+```bash
 python -m pip install -r requirements.txt
+```
 
-🔐 API Configuration
+---
 
-Create a local .env file in the project root:
+# 🔐 API Configuration
 
+Create a local `.env` file in the project root:
+
+```env
 OPENROUTER_API_KEY=your_new_openrouter_key
+```
 
-Never commit .env to Git.
+Never commit `.env` to Git.
 
-⚠️ Security
+### ⚠️ Security
 
 Never expose API credentials in:
 
-GitHub commits
-
-Source code
-
-README files
-
-Screenshots
-
-Terminal output
-
-Screen recordings
-
-Public documentation
+- GitHub commits
+- Source code
+- README files
+- Screenshots
+- Terminal output
+- Screen recordings
+- Public documentation
 
 If an API key is accidentally exposed:
 
+```text
 1. Revoke the exposed key
 2. Generate a new key
 3. Update the local .env
 4. Update Streamlit Secrets
 5. Check Git history if necessary
+```
 
-▶️ Run the Web Application
+---
 
+# ▶️ Run the Web Application
+
+```bash
 streamlit run app.py
+```
 
 The application normally becomes available at:
 
+```text
 http://localhost:8501
+```
 
-If port 8501 is already occupied:
+If port `8501` is already occupied:
 
+```bash
 streamlit run app.py --server.port 8502
+```
 
-🧪 Run Individual Tasks
+---
 
-Task 1 — FAQ & Keyword Search
+# 🧪 Run Individual Tasks
 
+## Task 1 — FAQ & Keyword Search
+
+```bash
 python task1.py
+```
 
 Demonstrates:
 
-FAQ data
+- FAQ data
+- Keyword matching
+- FAQ ID lookup
+- Category lookup
 
-Keyword matching
+## Task 2 — OpenRouter LLM
 
-FAQ ID lookup
-
-Category lookup
-
-Task 2 — OpenRouter LLM
-
+```bash
 python task2.py
+```
 
 Demonstrates:
 
-API configuration
+- API configuration
+- OpenRouter communication
+- Grounded prompting
+- Error handling
 
-OpenRouter communication
+## Task 3 — Retrieval Comparison
 
-Grounded prompting
-
-Error handling
-
-Task 3 — Retrieval Comparison
-
+```bash
 python task3.py
+```
 
 Demonstrates:
 
+```text
 Keyword Search
       ↓
 TF-IDF Search
@@ -731,31 +728,32 @@ TF-IDF Search
 Hybrid Search
       ↓
 Confidence Ranking
+```
 
-Task 4 — CLI Support Agent
+## Task 4 — CLI Support Agent
 
+```bash
 python task4.py
+```
 
 Demonstrates:
 
-Conversational support
+- Conversational support
+- Retrieval
+- LLM orchestration
+- Conversation history
+- Fallback handling
+- Human escalation
 
-Retrieval
+---
 
-LLM orchestration
+# ☁️ Streamlit Community Cloud Deployment
 
-Conversation history
+SupportAI can be deployed using **Streamlit Community Cloud**.
 
-Fallback handling
+## Deployment Flow
 
-Human escalation
-
-☁️ Streamlit Community Cloud Deployment
-
-SupportAI can be deployed using Streamlit Community Cloud.
-
-Deployment Flow
-
+```text
 GitHub Repository
        │
        ▼
@@ -778,43 +776,51 @@ Deploy
        │
        ▼
 🌐 Live SupportAI Application
+```
 
-Deployment Steps
+## Deployment Steps
 
-Open Streamlit Community Cloud.
+1. Open Streamlit Community Cloud.
+2. Sign in with GitHub.
+3. Select the repository:
 
-Sign in with GitHub.
-
-Select the repository:
-
+```text
 J-harshavardhan/Support_AI_Assistant
+```
 
-Select branch:
+4. Select branch:
 
+```text
 main
+```
 
-Set the application entry point:
+5. Set the application entry point:
 
+```text
 app.py
+```
 
-Open Advanced settings.
-
-Add the OpenRouter API key under Secrets.
+6. Open **Advanced settings**.
+7. Add the OpenRouter API key under **Secrets**.
 
 Use TOML format:
 
+```toml
 OPENROUTER_API_KEY = "your_new_openrouter_key"
+```
 
-Save the configuration.
+8. Save the configuration.
+9. Deploy or reboot the application.
 
-Deploy or reboot the application.
+---
 
-🔧 Configuration Behavior
+# 🔧 Configuration Behavior
 
 SupportAI supports two configuration environments.
 
-Local Development
+### Local Development
 
+```text
 .env
  │
  ▼
@@ -822,102 +828,83 @@ Python Dotenv
  │
  ▼
 OPENROUTER_API_KEY
+```
 
-Streamlit Cloud
+### Streamlit Cloud
 
+```text
 Streamlit Secrets
        │
        ▼
 OPENROUTER_API_KEY
+```
 
 This keeps API credentials outside the application source code.
 
-🖥️ Web Application Controls
+---
+
+# 🖥️ Web Application Controls
 
 The Streamlit application provides:
 
-💬 New Conversation
+### 💬 New Conversation
 
 Clears the current conversation state and starts a new support session.
 
-🛟 Escalate to Human Support
+### 🛟 Escalate to Human Support
 
 Creates a mock support ticket for requests that require human assistance.
 
-💡 Suggested Questions
+### 💡 Suggested Questions
 
 Provides example questions for quickly testing the application.
 
-🔎 FAQ Index
+### 🔎 FAQ Index
 
 Allows users to search the FAQ knowledge base by topic or keyword.
 
-💬 Chat Input
+### 💬 Chat Input
 
 Users can enter natural-language questions and submit them through the chat interface.
 
-🧪 Validation & Testing
+---
+
+# 🧪 Validation & Testing
 
 The project has been validated across multiple layers.
 
-Validation Area
+| Validation Area | Status |
+|---|---|
+| Python compilation | ✅ |
+| Task 1 keyword search | ✅ |
+| TF-IDF matching | ✅ |
+| Hybrid search | ✅ |
+| Confidence scoring | ✅ |
+| Mocked LLM orchestration | ✅ |
+| Missing API-key fallback | ✅ |
+| OpenRouter error handling | ✅ |
+| Streamlit startup | ✅ |
+| Human escalation workflow | ✅ |
 
-Status
+---
 
-Python compilation
-
-✅
-
-Task 1 keyword search
-
-✅
-
-TF-IDF matching
-
-✅
-
-Hybrid search
-
-✅
-
-Confidence scoring
-
-✅
-
-Mocked LLM orchestration
-
-✅
-
-Missing API-key fallback
-
-✅
-
-OpenRouter error handling
-
-✅
-
-Streamlit startup
-
-✅
-
-Human escalation workflow
-
-✅
-
-🛡️ Safety & Grounding Strategy
+# 🛡️ Safety & Grounding Strategy
 
 SupportAI intentionally separates:
 
+```text
 RETRIEVAL
     ↓
 CONFIDENCE
     ↓
 GENERATION
+```
 
 rather than allowing the LLM to independently determine the answer.
 
-High-Confidence Request
+### High-Confidence Request
 
+```text
 User Question
       ↓
 FAQ Match
@@ -927,9 +914,11 @@ Confidence Check
 Grounded LLM
       ↓
 Answer
+```
 
-Low-Confidence Request
+### Low-Confidence Request
 
+```text
 User Question
       ↓
 Weak / Unknown Match
@@ -939,101 +928,77 @@ Confidence Check
 Safe Fallback
       ↓
 Human Escalation
+```
 
 This architecture is designed to reduce the risk of unsupported customer-service responses.
 
-⚠️ Limitations
+---
+
+# ⚠️ Limitations
 
 SupportAI is intentionally built around a controlled FAQ knowledge base.
 
 Current limitations include:
 
-The FAQ knowledge base is relatively small.
+- The FAQ knowledge base is relatively small.
+- Retrieval quality depends on the available FAQ corpus.
+- TF-IDF provides lexical/vector-space similarity rather than embedding-based semantic retrieval.
+- Confidence scores are retrieval scores and should not be interpreted as calibrated probabilities.
+- Human escalation currently uses a mock ticket workflow.
+- Conversation state is application-session based.
+- LLM availability depends on the configured OpenRouter model and account.
+- The project is intended for educational and demonstration purposes rather than production customer support.
 
-Retrieval quality depends on the available FAQ corpus.
+---
 
-TF-IDF provides lexical/vector-space similarity rather than embedding-based semantic retrieval.
+# 🔮 Future Improvements
 
-Confidence scores are retrieval scores and should not be interpreted as calibrated probabilities.
+## 🔎 Retrieval
 
-Human escalation currently uses a mock ticket workflow.
+- [ ] Embedding-based semantic retrieval
+- [ ] Vector database integration
+- [ ] Hybrid BM25 + embedding retrieval
+- [ ] Cross-encoder reranking
+- [ ] Query normalization
+- [ ] Multilingual retrieval
+- [ ] FAQ relevance evaluation
 
-Conversation state is application-session based.
+## 🧠 AI
 
-LLM availability depends on the configured OpenRouter model and account.
+- [ ] Intent classification
+- [ ] Structured LLM responses
+- [ ] Hallucination detection
+- [ ] Grounding verification
+- [ ] Confidence calibration
+- [ ] Conversation-aware retrieval
+- [ ] Multi-turn intent tracking
 
-The project is intended for educational and demonstration purposes rather than production customer support.
+## 👨‍💼 Support Operations
 
-🔮 Future Improvements
+- [ ] Real ticket-management integration
+- [ ] Ticket priority prediction
+- [ ] Agent dashboard
+- [ ] Support analytics
+- [ ] Conversation sentiment analysis
+- [ ] Customer history integration
+- [ ] SLA monitoring
 
-🔎 Retrieval
+## ☁️ Production Engineering
 
-Embedding-based semantic retrieval
+- [ ] Authentication
+- [ ] Database-backed conversation history
+- [ ] API rate limiting
+- [ ] Automated CI/CD
+- [ ] Unit and integration test suite
+- [ ] Monitoring and observability
+- [ ] Structured application logging
+- [ ] Production deployment infrastructure
 
-Vector database integration
+---
 
-Hybrid BM25 + embedding retrieval
+# 📈 Potential Production Architecture
 
-Cross-encoder reranking
-
-Query normalization
-
-Multilingual retrieval
-
-FAQ relevance evaluation
-
-🧠 AI
-
-Intent classification
-
-Structured LLM responses
-
-Hallucination detection
-
-Grounding verification
-
-Confidence calibration
-
-Conversation-aware retrieval
-
-Multi-turn intent tracking
-
-👨‍💼 Support Operations
-
-Real ticket-management integration
-
-Ticket priority prediction
-
-Agent dashboard
-
-Support analytics
-
-Conversation sentiment analysis
-
-Customer history integration
-
-SLA monitoring
-
-☁️ Production Engineering
-
-Authentication
-
-Database-backed conversation history
-
-API rate limiting
-
-Automated CI/CD
-
-Unit and integration test suite
-
-Monitoring and observability
-
-Structured application logging
-
-Production deployment infrastructure
-
-📈 Potential Production Architecture
-
+```text
                          ┌───────────────────┐
                          │       USER        │
                          └─────────┬─────────┘
@@ -1078,67 +1043,59 @@ Production deployment infrastructure
              │                   │
              ▼                   ▼
          Response          Human Agent
+```
 
-🎓 Learning Outcomes
+---
+
+# 🎓 Learning Outcomes
 
 This project demonstrates practical experience with:
 
-Machine Learning
+## Machine Learning
 
-TF-IDF vectorization
+- TF-IDF vectorization
+- Cosine similarity
+- Information retrieval
+- Similarity scoring
+- Ranking systems
 
-Cosine similarity
+## Generative AI
 
-Information retrieval
+- LLM API integration
+- Grounded prompting
+- Retrieval-Augmented-style architecture
+- Controlled generation
+- LLM failure handling
 
-Similarity scoring
+## Software Engineering
 
-Ranking systems
+- Modular Python architecture
+- Dataclasses
+- Error handling
+- Environment configuration
+- CLI applications
+- Web application development
 
-Generative AI
+## Deployment
 
-LLM API integration
+- GitHub
+- Streamlit Community Cloud
+- Environment secrets
+- Application configuration
 
-Grounded prompting
+---
 
-Retrieval-Augmented-style architecture
-
-Controlled generation
-
-LLM failure handling
-
-Software Engineering
-
-Modular Python architecture
-
-Dataclasses
-
-Error handling
-
-Environment configuration
-
-CLI applications
-
-Web application development
-
-Deployment
-
-GitHub
-
-Streamlit Community Cloud
-
-Environment secrets
-
-Application configuration
-
-🧠 What Makes SupportAI Different?
+# 🧠 What Makes SupportAI Different?
 
 SupportAI is not designed as a simple:
 
+```text
 User → LLM → Answer
+```
 
 Instead, it follows:
 
+```text
 User
  │
  ▼
@@ -1157,99 +1114,56 @@ Grounded LLM    Safe Fallback
  │                 │
  ▼                 ▼
 Answer        Human Support
+```
 
-The goal is to make customer support more controlled, transparent, and reliable.
+The goal is to make customer support **more controlled, transparent, and reliable**.
 
-📌 Example Use Cases
+---
+
+# 📌 Example Use Cases
 
 SupportAI can be adapted for organizations that maintain structured support documentation.
 
 Potential use cases include:
 
-🛒 E-commerce customer support
+- 🛒 E-commerce customer support
+- 💳 Billing support
+- 📦 Order and delivery support
+- 🔐 Account support
+- 📧 Customer account management
+- 🔄 Subscription support
+- 🏢 Internal employee helpdesks
+- 🎓 Educational institution support
+- 💻 SaaS product support
 
-💳 Billing support
+---
 
-📦 Order and delivery support
+# 📊 System Summary
 
-🔐 Account support
+| Capability | SupportAI |
+|---|---|
+| FAQ Knowledge Base | ✅ |
+| Keyword Retrieval | ✅ |
+| TF-IDF Retrieval | ✅ |
+| Cosine Similarity | ✅ |
+| Hybrid Retrieval | ✅ |
+| Confidence Scoring | ✅ |
+| Grounded LLM Responses | ✅ |
+| Conversation History | ✅ |
+| API Error Handling | ✅ |
+| FAQ Fallback | ✅ |
+| Human Escalation | ✅ |
+| Mock Ticket Generation | ✅ |
+| Streamlit Interface | ✅ |
+| Cloud Deployment | ✅ |
 
-📧 Customer account management
+---
 
-🔄 Subscription support
-
-🏢 Internal employee helpdesks
-
-🎓 Educational institution support
-
-💻 SaaS product support
-
-📊 System Summary
-
-Capability
-
-SupportAI
-
-FAQ Knowledge Base
-
-✅
-
-Keyword Retrieval
-
-✅
-
-TF-IDF Retrieval
-
-✅
-
-Cosine Similarity
-
-✅
-
-Hybrid Retrieval
-
-✅
-
-Confidence Scoring
-
-✅
-
-Grounded LLM Responses
-
-✅
-
-Conversation History
-
-✅
-
-API Error Handling
-
-✅
-
-FAQ Fallback
-
-✅
-
-Human Escalation
-
-✅
-
-Mock Ticket Generation
-
-✅
-
-Streamlit Interface
-
-✅
-
-Cloud Deployment
-
-✅
-
-🔐 Security Checklist
+# 🔐 Security Checklist
 
 Before pushing the project to GitHub:
 
+```text
 ☑ .env is included in .gitignore
 ☑ API keys are not hardcoded
 ☑ API keys are not present in README
@@ -1257,9 +1171,11 @@ Before pushing the project to GitHub:
 ☑ API keys are not printed in logs
 ☑ .venv is ignored
 ☑ Python cache files are ignored
+```
 
-Recommended .gitignore:
+Recommended `.gitignore`:
 
+```gitignore
 # Environment
 .env
 .env.*
@@ -1283,41 +1199,57 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+```
 
-🚀 Quick Start
+---
+
+# 🚀 Quick Start
 
 For users who simply want to run SupportAI:
 
+```bash
 git clone https://github.com/J-harshavardhan/Support_AI_Assistant.git
 
 cd Support_AI_Assistant
 
 python -m venv .venv
+```
 
-Windows
+### Windows
 
+```bat
 .venv\Scripts\activate
+```
 
 Install dependencies:
 
+```bash
 python -m pip install -r requirements.txt
+```
 
 Configure the API key:
 
+```env
 OPENROUTER_API_KEY=your_new_openrouter_key
+```
 
 Run the application:
 
+```bash
 streamlit run app.py
+```
 
-📚 Project Philosophy
+---
+
+# 📚 Project Philosophy
 
 The main idea behind SupportAI is:
 
-Don't let the language model decide what is true. First retrieve trusted information, evaluate whether the match is reliable, and then use the model to communicate that information naturally.
+> **Don't let the language model decide what is true. First retrieve trusted information, evaluate whether the match is reliable, and then use the model to communicate that information naturally.**
 
 The architecture combines:
 
+```text
        Information Retrieval
                 +
         Machine Learning
@@ -1327,34 +1259,41 @@ The architecture combines:
        Confidence Routing
                 +
         Human Escalation
+```
 
-📄 License
+---
 
-This project was created for educational and assessment purposes.
+# 📄 License
 
-👨‍💻 Author
+This project was created for **educational and assessment purposes**.
 
-J. Harshavardhan
+---
 
-AI & ML Student
+# 👨‍💻 Author
 
-Project
+## J. Harshavardhan
 
-🤖 SupportAI — Grounded Helpdesk Assistant
+**AI & ML Student**
+
+### Project
+
+🤖 **SupportAI — Grounded Helpdesk Assistant**
 
 <a href="https://github.com/J-harshavardhan/Support_AI_Assistant">
   💻 View Source Code
 </a>
 
-  •  
+&nbsp;&nbsp;•&nbsp;&nbsp;
 
 <a href="https://harsha-support-ai-assistant.streamlit.app/">
   🚀 Try Live Demo
 </a>
 
+---
+
 <p align="center">
 
-🤖 SupportAI
+### 🤖 SupportAI
 
 <strong>Grounded answers. Confidence-aware retrieval. Safe escalation.</strong>
 
