@@ -1,11 +1,15 @@
 """Complete conversational SupportAI helpdesk agent for Task 4."""
 
 from dataclasses import dataclass
+import logging
 import random
 
 from task1 import faqs
 from task2 import DEFAULT_MODEL, LLMClient, OPENROUTER_API_KEY
 from task3 import hybrid_search
+
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -33,15 +37,39 @@ class SupportAgent:
     def handle_message(self, user_message):
         """Answer a user message using the best confident FAQ match."""
         self.conversation_history.append(ConversationTurn("user", user_message))
-        matching_faqs = hybrid_search(self.faqs, user_message, top_k=1)
+        try:
+            matching_faqs = hybrid_search(self.faqs, user_message, top_k=1)
+        except Exception as error:
+            logger.exception(
+                "FAQ matching failed (%s): %s",
+                type(error).__name__,
+                error,
+            )
+            matching_faqs = []
         best_match = matching_faqs[0] if matching_faqs else None
 
+        # hybrid_search returns (faq_entry, confidence); this is the value
+        # compared with the configured threshold, before any LLM request.
         if best_match and best_match[1] >= self.confidence_threshold:
             faq_entry, confidence = best_match
-            response = self.llm_client.generate_faq_response(
-                user_message,
-                faq_entry,
-            )
+            try:
+                if self.llm_client is None:
+                    raise RuntimeError(
+                        "LLM client is not configured; set OPENROUTER_API_KEY."
+                    )
+                response = self.llm_client.generate_faq_response(
+                    user_message,
+                    faq_entry,
+                )
+            except Exception as error:
+                logger.exception(
+                    "LLM response failed for %s at confidence %.4f (%s): %s",
+                    faq_entry["id"],
+                    confidence,
+                    type(error).__name__,
+                    error,
+                )
+                response = faq_entry["answer"]
             self.low_confidence_streak = 0
             assistant_turn = ConversationTurn(
                 "assistant",
@@ -50,6 +78,12 @@ class SupportAgent:
                 confidence=confidence,
             )
         else:
+            logger.info(
+                "No confident FAQ match for %r; best score=%s, threshold=%.4f",
+                user_message,
+                best_match[1] if best_match else None,
+                self.confidence_threshold,
+            )
             response = (
                 "I don't have information about that in my knowledge base. "
                 "Would you like me to connect you with a human support agent?"

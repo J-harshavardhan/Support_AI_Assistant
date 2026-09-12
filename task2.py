@@ -10,7 +10,7 @@ load_dotenv()
 
 # ── Task 2 ───────────────────────────────────────────────────────
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
-DEFAULT_MODEL = "openai/gpt-4o-mini"
+DEFAULT_MODEL = "meta-llama/llama-3.2-3b-instruct"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
