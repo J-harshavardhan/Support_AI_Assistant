@@ -26,10 +26,6 @@ A grounded customer-support assistant that retrieves answers from a controlled F
 > `home.png`, `query.png`, `answer.png`, `escalation.png`.
 
 <p align="center">
-  <img src="screenshots/home.png" width="95%" alt="SupportAI Helpdesk Home Interface">
-</p>
-
-<p align="center">
   <em>SupportAI Helpdesk — a clean interface for grounded customer support.</em>
 </p>
 
