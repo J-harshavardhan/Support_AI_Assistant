@@ -20,17 +20,6 @@ A grounded customer-support assistant that retrieves answers from a controlled F
 
 ---
 
-## 📸 Application Preview
-
-> **Screenshots:** Create a `screenshots/` folder in your repository and add the four project screenshots using these exact names:
-> `home.png`, `query.png`, `answer.png`, `escalation.png`.
-
-<p align="center">
-  <em>SupportAI Helpdesk — a clean interface for grounded customer support.</em>
-</p>
-
----
-
 # 🌟 Overview
 
 **SupportAI** is an AI-powered customer-support assistant built using **Python, Streamlit, TF-IDF, hybrid retrieval, and the OpenRouter LLM API**.
